@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URBEXA — OPTIURBA</title>
+  <style>
+    :root{
+      --navy:#0B2E67;
+      --blue:#1E7DB6;
+      --green:#6BC547;
+      --light:#EAF5FB;
+      --text:#12345d;
+      --muted:#5a7695;
+      --bg:#f7fbff;
+      --border:#dbe9f4;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1100px, calc(100% - 32px));margin:0 auto}
+    .hero{
+      background:linear-gradient(135deg,#07162b 0%,#0a2140 50%,#10386a 100%);
+      color:white;
+      padding:32px 0 60px;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:40px;
+    }
+    .brand{
+      background:white;
+      color:var(--navy);
+      border-radius:18px;
+      padding:14px 18px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .brand .x{color:var(--green)}
+    .nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      padding:8px;
+    }
+    .nav a{
+      color:#d9ecfb;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:14px;
+    }
+    .nav a:hover{background:rgba(255,255,255,.10);color:white}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:32px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:#d9ecfb;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+    h1{
+      margin:0;
+      font-size:56px;
+      line-height:1.05;
+    }
+    .gradient{
+      display:block;
+      background:linear-gradient(90deg,#d9f2ff,#63b6ec,#69d05e);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero p{
+      margin:22px 0 0;
+      color:#d2e6f6;
+      font-size:18px;
+      line-height:1.8;
+    }
+    .btns{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:16px;
+      font-weight:700;
+    }
+    .btn-primary{background:#2d8ed7;color:white}
+    .btn-secondary{
+      color:white;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .side-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 24px 60px rgba(0,0,0,.28);
+    }
+    .side-head{
+      background:linear-gradient(180deg,#0b2e67 0%,#123f7d 100%);
+      padding:28px;
+      text-align:center;
+    }
+    .opti{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.28em;
+    }
+    .opti .a{color:var(--light)}
+    .opti .b{color:var(--blue)}
+    .opti .c{color:var(--green)}
+    .sub{margin-top:12px;color:#d9ecfb;font-size:14px}
+    .ttl{margin-top:14px;font-size:30px;font-weight:700}
+    .side-body{padding:22px}
+    .bullet{
+      background:rgba(7,22,43,.35);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:18px;
+      padding:14px 16px;
+      margin-bottom:12px;
+      color:#edf8ff;
+    }
+    .note{
+      margin-top:16px;
+      background:#0b2e67;
+      border:1px solid #2a5f98;
+      color:white;
+      border-radius:18px;
+      padding:16px;
+      font-size:15px;
+    }
+    section{padding:64px 0}
+    .kicker{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:#5f8ab0;
+      margin-bottom:12px;
+    }
+    h2{
+      margin:0;
+      font-size:42px;
+      line-height:1.1;
+      color:#0b2d57;
+    }
+    .lead{
+      margin-top:16px;
+      font-size:18px;
+      line-height:1.8;
+      color:#45698c;
+      max-width:820px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:28px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:28px;
+    }
+    .card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 12px 30px rgba(8,28,58,.08);
+    }
+    .card h3{margin:0;font-size:22px;color:#0b2d57}
+    .card p{margin:12px 0 0;color:#5a7695;line-height:1.8}
+    .mock{
+      background:linear-gradient(180deg,#0a2140 0%,#10386a 100%);
+      border:1px solid #cfe3f1;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 24px 60px rgba(0,0,0,.20);
+    }
+    .mock-title{
+      background:#eaf5fb;
+      color:#0b2e67;
+      padding:14px 18px;
+      font-size:14px;
+      font-weight:700;
+      border-bottom:1px solid #cfe3f1;
+    }
+    .mock-body{padding:18px}
+    .mock-shell{
+      background:white;
+      border-radius:24px;
+      padding:14px;
+    }
+    .app{
+      border:1px solid #d7e5f0;
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .app-top{
+      background:#1f3f77;
+      color:#dce9f7;
+      padding:14px 16px;
+      font-size:15px;
+      font-weight:600;
+    }
+    .app-main{
+      background:#f6f8fb;
+      padding:18px;
+      color:#16396d;
+    }
+    .panel{
+      background:#f8fafc;
+      border:1px solid #d7e1ec;
+      border-radius:18px;
+      padding:16px;
+    }
+    .panel-small{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#6e778a;
+    }
+    .panel-title{
+      margin-top:10px;
+      font-size:24px;
+      font-weight:700;
+      color:#203f73;
+    }
+    .panel-sub{
+      margin-top:10px;
+      font-size:14px;
+      color:#6f788a;
+    }
+    .score{
+      margin-top:16px;
+      background:#214983;
+      color:white;
+      border-radius:20px;
+      padding:18px;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .ring{
+      width:92px;
+      height:92px;
+      border-radius:999px;
+      border:10px solid #3eb36a;
+      border-right-color:#4f638d;
+      border-bottom-color:#4f638d;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      font-weight:700;
+      flex:0 0 auto;
+    }
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .badge{
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:14px;
+      font-weight:700;
+    }
+    .b1{background:#cfeedd;color:#12694a}
+    .b2{background:#cff0db;color:#11694a}
+    .b3{background:#f5e7b9;color:#915c10}
+    .b4{background:#f3d4d4;color:#a52828}
+    .mini{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+    .mini .panel strong{
+      display:block;
+      margin-top:10px;
+      font-size:26px;
+      color:#203f73;
+    }
+    .source{
+      margin-top:16px;
+      background:#edf8f0;
+      border:1px solid #b9dfc8;
+      border-radius:18px;
+      padding:14px 16px;
+      color:#2d7c52;
+      font-size:14px;
+    }
+    .foot{
+      margin-top:16px;
+      padding-top:12px;
+      border-top:1px solid #d7e1ec;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color:#6e778a;
+      font-size:14px;
+    }
+    .chip{
+      background:white;
+      border:1px solid #d7e1ec;
+      border-radius:999px;
+      padding:10px 14px;
+    }
+    .contact{
+      background:linear-gradient(180deg,#0a2140 0%,#10386a 100%);
+      color:white;
+      border:1px solid #cfe3f1;
+      border-radius:28px;
+      padding:26px;
+      box-shadow:0 24px 60px rgba(0,0,0,.20);
+    }
+    .contact form{display:grid;gap:14px;margin-top:20px}
+    .contact input,.contact textarea{
+      width:100%;
+      padding:15px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.10);
+      color:white;
+      font-size:15px;
+    }
+    .contact input::placeholder,.contact textarea::placeholder{color:#c2d9eb}
+    .contact button{
+      border:none;
+      border-radius:16px;
+      background:#69d05e;
+      color:#0a2140;
+      font-weight:700;
+      font-size:16px;
+      padding:16px;
+      cursor:pointer;
+    }
+    @media (max-width: 1000px){
+      .hero-grid,.screen-grid,.grid-2,.grid-3,.mini{grid-template-columns:1fr}
+      h1{font-size:44px}
+      h2{font-size:34px}
+      .score,.foot{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">URBE<span class="x">X</span>A</div>
+        <nav class="nav">
+          <a href="#potentiel">Potentiel</a>
+          <a href="#usages">Usages</a>
+          <a href="#screening">Screening actif</a>
+          <a href="#metiers">Métiers</a>
+          <a href="#apropos">À propos</a>
+        </nav>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">URBEXA • éditeur du logiciel OPTIURBA</div>
+          <h1>La lecture réglementaire devient <span class="gradient">un avantage foncier premium.</span></h1>
+          <p>OPTIURBA transforme les règlements d'urbanisme en lecture structurée, calculable et traçable, afin d'aider les professionnels de l'immobilier à décider plus vite, mieux cibler leurs opportunités et sécuriser leurs arbitrages.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#apropos">Demander une présentation</a>
+            <a class="btn btn-secondary" href="#usages">Découvrir les usages</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-head">
+            <div class="opti"><span class="a">OPTI</span><span class="b">URB</span><span class="c">A</span></div>
+            <div class="sub">Le moteur d’intelligence foncière</div>
+            <div class="ttl">Du règlement d'urbanisme à la décision foncière</div>
+          </div>
+          <div class="hero-card-body">
+            <div class="bullet">Lecture structurée des articles PLU/PLUi</div>
+            <div class="bullet">Extraction des paramètres réglementaires utiles</div>
+            <div class="bullet">Restitution lisible, traçable et exploitable</div>
+            <div class="bullet">Projection vers le screening foncier à grande échelle</div>
+            <div class="note">Une approche pensée pour des usages professionnels à forte valeur : arbitrage, faisabilité, calcul des droits à construire, intégration géométrique, sélection d'actifs et prospection foncière.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="potentiel">
+    <div class="container">
+      <div class="kicker">Potentiel</div>
+      <h2>Pourquoi le potentiel est fort</h2>
+      <p class="lead">Le marché manque encore d'outils capables de transformer une matière réglementaire complexe en avantage décisionnel clair. C'est précisément sur cette zone de friction qu'URBEXA se positionne.</p>
+    </div>
+  </section>
+
+  <section id="usages">
+    <div class="container">
+      <div class="kicker">Usages</div>
+      <h2>Trois niveaux d'analyse, une seule plateforme</h2>
+      <p class="lead">De la vérification ponctuelle à la prospection prédictive à grande échelle, OPTIURBA s'adapte au niveau de profondeur attendu par chaque usage métier.</p>
+
+      <div class="grid-3">
+        <div class="card"><h3>Analyse parcellaire</h3><p>Vous avez une adresse. OPTIURBA restitue rapidement ce qu'il est possible de faire sur la parcelle.</p></div>
+        <div class="card"><h3>Screening actif</h3><p>Vous choisissez une commune. OPTIURBA analyse l'ensemble de ses parcelles et met en avant les opportunités classées par potentiel.</p></div>
+        <div class="card"><h3>Prospection prédictive</h3><p>Vous définissez une cible métier. OPTIURBA identifie les parcelles correspondant au critère.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screening" class="section-white">
+    <div class="container">
+      <div class="screen-grid" style="display:grid;grid-template-columns:1fr .95fr;gap:34px;align-items:center;">
+        <div>
+          <div class="kicker">Screening actif</div>
+          <h2>Une commune entière analysée en quelques minutes</h2>
+          <p class="lead">OPTIURBA fait passer l'analyse foncière du dossier par dossier à une logique de lecture globale : extension, piscine, division ou fort potentiel constructible peuvent être détectés et classés à l'échelle d'une commune.</p>
+
+          <div class="grid-3">
+            <div class="card"><h3>Score par parcelle</h3><p>Chaque parcelle peut être hiérarchisée selon le potentiel réglementaire et les contraintes identifiées.</p></div>
+            <div class="card"><h3>Badges opportunité</h3><p>Extension possible, piscine autorisée, division à étudier, surélévation envisageable.</p></div>
+            <div class="card"><h3>Liste exploitable</h3><p>Filtrage, priorisation et export constituent l'extension naturelle de cette logique.</p></div>
+          </div>
+        </div>
+
+        <div class="mock">
+          <div class="mock-title">Exemple d’analyse parcellaire OPTIURBA</div>
+          <div class="mock-body">
+            <div class="mock-shell">
+              <div class="app">
+                <div class="app-top">OPTIURBA — Analyse parcellaire</div>
+                <div class="app-main">
+                  <div class="panel">
+                    <div class="panel-small">Parcelle analysée</div>
+                    <div class="panel-title">13 Avenue des Pins — Marseille 13009</div>
+                    <div class="panel-sub">Zone UD · PLU Marseille Métropole · Réf. KA 0142</div>
+                  </div>
+
+                  <div class="score">
+                    <div class="ring">85</div>
+                    <div>
+                      <div class="panel-small" style="color:#b8cbe6">Score de constructibilité</div>
+                      <div style="font-size:26px;font-weight:700;margin-top:8px">Fort potentiel</div>
+                      <div style="font-size:15px;color:#c9d9ef;margin-top:8px">CES résiduel · 210 m² constructibles</div>
+                    </div>
+                  </div>
+
+                  <div class="badges">
+                    <span class="badge b1">✓ Extension possible</span>
+                    <span class="badge b2">✓ Piscine autorisée</span>
+                    <span class="badge b3">~ Division à étudier</span>
+                    <span class="badge b4">✕ Surélévation limitée</span>
+                  </div>
+
+                  <div class="mini">
+                    <div class="panel"><div class="panel-small">Constructible</div><strong>210 m²</strong></div>
+                    <div class="panel"><div class="panel-small">Hauteur max</div><strong>9 m</strong></div>
+                  </div>
+
+                  <div class="source">Source · Art. UD-7 Implantation / Art. UD-9 Emprise / Art. UD-11 Piscines</div>
+
+                  <div class="foot">
+                    <div>Fiabilité <strong style="color:#2f8b57">élevée</strong></div>
+                    <div class="chip">⚡ 4 secondes</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note" style="margin-top:16px">Lecture immédiate du potentiel, badges d'opportunité, indicateurs clés et référence source.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metiers">
+    <div class="container">
+      <div class="kicker">Métiers</div>
+      <h2>Conçu pour chaque professionnel de l'immobilier</h2>
+      <p class="lead">Un même moteur d'analyse, des bénéfices immédiats selon les contextes d'usage : mandat, prospection, faisabilité, arbitrage ou sécurisation d'un dossier.</p>
+
+      <div class="grid-3">
+        <div class="card"><h3>Agents immobiliers</h3><p>Valoriser un bien avec des données concrètes sur l'extension, la piscine ou le potentiel constructible avant mandat.</p></div>
+        <div class="card"><h3>Marchands de biens</h3><p>Scanner rapidement une commune pour faire émerger dents creuses, divisions et fort potentiel résiduel.</p></div>
+        <div class="card"><h3>Promoteurs immobiliers</h3><p>Identifier plus tôt les terrains à fort potentiel constructible et affiner la prospection foncière.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <div class="kicker">À propos</div>
+          <h2 style="font-size:36px">Né du terrain, construit avec rigueur</h2>
+          <p class="lead" style="max-width:none">URBEXA est fondé par des professionnels de l'immobilier qui ont d'abord rencontré le problème sur le terrain, avant de chercher à le résoudre avec méthode.</p>
+        </div>
+
+        <div class="contact">
+          <div class="kicker" style="color:#9ec8e7">Contact</div>
+          <h2 style="font-size:36px;color:white">Entrer en contact</h2>
+          <p style="color:#d2e6f6">Présentez brièvement votre besoin et votre usage métier.</p>
+
+          <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="3b70678f-e190-47b5-98cb-9fbc78c4d426" />
+            <input type="hidden" name="subject" value="Nouvelle demande depuis le site URBEXA" />
+            <input type="hidden" name="from_name" value="Site URBEXA" />
+            <input type="checkbox" name="botcheck" style="display:none" />
+            <input type="text" name="name" placeholder="Nom" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer la demande</button>
+          </form>
+
+          <p style="margin-top:14px;color:#c2d9eb;font-size:13px">Nous revenons vers vous rapidement après réception de votre message.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
